@@ -6,6 +6,18 @@ using System.Threading.Tasks;
 
 namespace xumm_netcore.src.Model
 {
+    public class SignInResponse
+    {
+        public string uuid { get; set; }
+        public Next next { get; set; }
+        public Refs refs { get; set; }
+        public bool pushed { get; set; }
+        public error error { get; set; }
+    }
+    public class Next   
+    {
+        public string always { get; set; }
+    }
     public class Refs
     {
         public string qr_png { get; set; }

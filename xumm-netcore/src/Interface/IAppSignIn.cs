@@ -9,6 +9,6 @@ namespace xumm_netcore.src.Interface
 {
     public interface IAppSignIn
     {
-        Task<RequestResponse> SignIn();
+        Task<SignInResponse> SignIn();
     }
 }
