@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>xumm_netcore</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="RestSharp" Version="107.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="docs\" />
+    <Folder Include="artifacts\" />
+    <Folder Include="samples\" />
+    <Folder Include="tests\" />
+    <Folder Include="src\Interface\" />
+    <Folder Include="src\" />
+    <Folder Include="src\Repository\" />
+  </ItemGroup>
+
+</Project>
