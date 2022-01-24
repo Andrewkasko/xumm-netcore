@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
@@ -12,9 +13,15 @@ namespace xumm_netcore.src.Repository
 {
     public class NFToken : INFToken
     {
-        public async Task<RequestResponse> MintToken(Request request) {
+        public async Task<RequestResponse> TokenAction(Request request) {
             var client = new HttpClient();
-            string jsonString = JsonSerializer.Serialize(request);
+            string jsonString = JsonConvert.SerializeObject(
+               request,
+               Newtonsoft.Json.Formatting.None,
+               new JsonSerializerSettings
+               {
+                   NullValueHandling = NullValueHandling.Ignore
+               });
 
             var httpRequest = new HttpRequestMessage
             {
@@ -42,5 +49,6 @@ namespace xumm_netcore.src.Repository
                 return Newtonsoft.Json.JsonConvert.DeserializeObject<RequestResponse>(body);
             }
         }
+
     }
 }

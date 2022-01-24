@@ -9,6 +9,6 @@ namespace xumm_netcore.src.Interface
 {
     public interface INFToken
     {
-        Task<RequestResponse> MintToken(Request request);
+        Task<RequestResponse> TokenAction(Request request);
     }
 }
