@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using xumm_netcore.src.Interface;
 using xumm_netcore.src.Model;
 
 namespace xumm_netcore.src.Repository
 {
-    public class AppSignIn : IAppSignIn
+    public class NFToken : INFToken
     {
-        public async Task<RequestResponse> SignIn()
-        {
+        public async Task<RequestResponse> MintToken(Request request) {
             var client = new HttpClient();
-            var request = new HttpRequestMessage
+            string jsonString = JsonSerializer.Serialize(request);
+
+            var httpRequest = new HttpRequestMessage
             {
                 Method = HttpMethod.Post,
                 RequestUri = new Uri("https://xumm.app/api/v1/platform/payload"),
@@ -24,7 +26,7 @@ namespace xumm_netcore.src.Repository
                         { "X-API-Key", "" }, // API-KEY REQUIRED
                         { "X-API-Secret", "" }, // API-SECRET REQUIRED
                     },
-                Content = new StringContent("{\"txjson\":{\"TransactionType\":\"SignIn\"}}")
+                Content = new StringContent(jsonString)
                 {
                     Headers =
                     {
@@ -33,7 +35,7 @@ namespace xumm_netcore.src.Repository
                 }
             };
 
-            using (var response = await client.SendAsync(request))
+            using (var response = await client.SendAsync(httpRequest))
             {
                 response.EnsureSuccessStatusCode();
                 string body = await response.Content.ReadAsStringAsync();

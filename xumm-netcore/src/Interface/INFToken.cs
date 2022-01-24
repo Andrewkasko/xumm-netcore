@@ -7,8 +7,8 @@ using xumm_netcore.src.Model;
 
 namespace xumm_netcore.src.Interface
 {
-    public interface IAppSignIn
+    public interface INFToken
     {
-        Task<RequestResponse> SignIn();
+        Task<RequestResponse> MintToken(Request request);
     }
 }

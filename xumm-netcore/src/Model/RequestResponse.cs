@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace xumm_netcore.src.Model
 {
-    public class SignInResponse
+    public class RequestResponse
     {
         public string uuid { get; set; }
         public Next next { get; set; }
