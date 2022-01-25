@@ -5,7 +5,6 @@ xumm-netcore is a C# client library that allows executing payloads and managing 
 **Application** **sign** **in** 
 
 ```
-Request signInRequest = new Request() { txjson = new TxJson() { TransactionType = "SignIn" }};
 
 RequestResponse signInResponse = INFToken.TokenAction(signInRequest)
 ```
