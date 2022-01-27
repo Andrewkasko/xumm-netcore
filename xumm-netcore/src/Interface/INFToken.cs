@@ -10,5 +10,6 @@ namespace xumm_netcore.src.Interface
     public interface INFToken
     {
         Task<RequestResponse> TokenAction(Request request);
+        Task<PayloadResponse> GetPayload(string payloadUuid);
     }
 }

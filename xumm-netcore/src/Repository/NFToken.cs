@@ -50,5 +50,24 @@ namespace xumm_netcore.src.Repository
             }
         }
 
+        public async Task<PayloadResponse> GetPayload(string payloadUuid) {
+            var client = new HttpClient();
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri(String.Format("https://xumm.app/api/v1/platform/payload/{0}", payloadUuid)),
+                Headers =
+                    {
+                        { "Accept", "application/json" },
+                    },
+            };
+            using (var response = await client.SendAsync(request))
+            {
+                response.EnsureSuccessStatusCode();
+                var body = await response.Content.ReadAsStringAsync();
+                return Newtonsoft.Json.JsonConvert.DeserializeObject<PayloadResponse>(body);
+
+            }
+        }
     }
 }

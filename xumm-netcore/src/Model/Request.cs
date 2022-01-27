@@ -28,13 +28,6 @@ namespace xumm_netcore.src.Model
         public ReturnUrl return_url { get; set; }
     }
 
-    public class CustomMeta
-    {
-        public string identifier { get; set; }
-        public string blob { get; set; }
-        public string instruction { get; set; }
-    }
-
     public class TxJson {
         public string TransactionType { get; set; }
         public string Account { get; set; }
